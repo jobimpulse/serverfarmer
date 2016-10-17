@@ -59,7 +59,6 @@ sf-secure-fs
 sf-secure-sshd
 sf-ip-allocs
 sf-backup
-sf-ntp
 sf-mc-black
 sf-monitoring-newrelic
 sf-monitoring-snmpd
