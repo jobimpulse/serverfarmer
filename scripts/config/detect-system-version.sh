@@ -6,8 +6,14 @@ detect_os_type()
 		echo "debian"
 	elif [ -f /etc/redhat-release ]; then
 		echo "redhat"
+	elif [ -f /etc/SuSE-release ]; then
+		echo "suse"
+	elif [ -f /etc/freebsd-update.conf ]; then
+		echo "freebsd"
 	elif [ -x /netbsd ]; then
 		echo "netbsd"
+	elif [ -f /bsd ] && [ -f /bsd.rd ]; then
+		echo "openbsd"
 	else
 		echo "generic"
 	fi
@@ -138,12 +144,43 @@ detect_redhat_version()
 	fi
 }
 
+detect_suse_version()
+{
+	if [ -f /etc/os-release ]; then
+		. /etc/os-release
+		echo "suse-`echo $VERSION_ID |cut -d. -f 1`"
+	else
+		echo "suse-legacy"
+	fi
+}
+
 detect_netbsd_version()
 {
-	DATA=`uname -v`
+	DATA=`uname -r`
 	case "$DATA" in
-		"NetBSD 6.1.5 (GENERIC)")
+		"6.1.5")
 			echo "netbsd-6"
+			;;
+		*)
+			;;
+	esac
+}
+
+detect_openbsd_version()
+{
+	VER=`uname -r |sed s/\\\.//g`
+	echo "openbsd-$VER"
+}
+
+detect_freebsd_version()
+{
+	DATA=`uname -r`
+	case "$DATA" in
+		"9.3-RELEASE")
+			echo "freebsd-9"
+			;;
+		"10.1-RELEASE")
+			echo "freebsd-10"
 			;;
 		*)
 			;;
@@ -163,8 +200,17 @@ else
 		redhat)
 			echo "`detect_redhat_version`"
 			;;
+		suse)
+			echo "`detect_suse_version`"
+			;;
 		netbsd)
 			echo "`detect_netbsd_version`"
+			;;
+		openbsd)
+			echo "`detect_openbsd_version`"
+			;;
+		freebsd)
+			echo "`detect_freebsd_version`"
 			;;
 		*)
 			exit 1
