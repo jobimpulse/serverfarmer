@@ -46,7 +46,11 @@ notify_phone() {
 }
 
 cacti_ssh_target() {
-	echo "cacti.espeo.dev:/srv/sites/cacti/external"
+	echo "cacti.tomaszklim.pl:/external"
+}
+
+cacti_ssh_port() {
+	echo "22000"
 }
 
 extension_repository() {
