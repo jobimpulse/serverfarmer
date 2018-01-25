@@ -5,6 +5,5 @@ sf-ip-allocs
 sf-ip-fw
 sf-backup
 sf-mc-black
-sf-monitoring-newrelic
-sf-monitoring-snmpd
+sf-monitoring-heartbeat
 sf-db-tools
