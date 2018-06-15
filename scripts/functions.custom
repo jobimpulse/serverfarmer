@@ -21,7 +21,7 @@ ssh_dedicated_key_storage_filename() {
 }
 
 gpg_backup_key() {
-	echo "backup-job@espeo.pl"
+	echo ""
 }
 
 local_backup_directory() {
@@ -62,14 +62,6 @@ extension_repositories() {
 
 keys_repository() {
 	echo "https://github.com/jobimpulse/sf-keys"
-}
-
-add_backup_extension() {
-	echo "$1.gz"
-}
-
-stream_handler() {
-	echo "gzip -c9"
 }
 
 backup_history_index() {
