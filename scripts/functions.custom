@@ -32,14 +32,6 @@ primary_admin_account() {
 	echo "tklim"
 }
 
-cacti_ssh_target() {
-	echo "cacti.tomaszklim.pl:/external"
-}
-
-cacti_ssh_port() {
-	echo "22000"
-}
-
 heartbeat_url() {
 	echo "http://monitoring.espeo.pl/cgi-bin/heartbeat-local.cgi"
 }
@@ -54,8 +46,4 @@ extension_repositories() {
 
 keys_repository() {
 	echo "https://github.com/jobimpulse/sf-keys"
-}
-
-backup_history_index() {
-	echo "%Y%m%d/%H"
 }
